@@ -1,0 +1,112 @@
+.category {
+  min-height: calc(100vh - 130px);
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+  background-attachment: fixed;
+  margin-top: 80px;
+}
+
+.category-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.category-header {
+  text-align: center;
+  margin-bottom: 50px;
+  position: relative;
+}
+
+.category-title {
+  font-size: 48px;
+  font-weight: 800;
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 15px;
+  display: inline-block;
+  position: relative;
+  padding: 0 30px;
+}
+
+.category-title::before,
+.category-title::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, #ff6b6b);
+  border-radius: 2px;
+}
+
+.category-title::before {
+  left: -80px;
+}
+
+.category-title::after {
+  right: -80px;
+  background: linear-gradient(90deg, #4ecdc4, transparent);
+}
+
+.category-subtitle {
+  color: #a5b4cb;
+  font-size: 18px;
+  margin-bottom: 25px;
+  opacity: 0.9;
+}
+
+.category-content {
+  background: rgba(15, 12, 41, 0.5);
+  backdrop-filter: blur(15px);
+  border-radius: 25px;
+  padding: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .category {
+    padding: 20px 15px;
+  }
+
+  .category-title {
+    font-size: 36px;
+    padding: 0 15px;
+  }
+
+  .category-title::before,
+  .category-title::after {
+    width: 30px;
+  }
+
+  .category-title::before {
+    left: -45px;
+  }
+
+  .category-title::after {
+    right: -45px;
+  }
+
+  .category-content {
+    padding: 25px 20px;
+    border-radius: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .category-title {
+    font-size: 28px;
+  }
+
+  .category-subtitle {
+    font-size: 16px;
+  }
+
+  .category-content {
+    padding: 20px 15px;
+  }
+}

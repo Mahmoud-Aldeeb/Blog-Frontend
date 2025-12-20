@@ -1,0 +1,261 @@
+.posts-page-wrapper {
+  width: 100%;
+  min-height: calc(100vh - 80px);
+  background: linear-gradient(180deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+  color: white;
+  padding: 85px 0 60px;
+}
+
+/* Header Section */
+.posts-page-header {
+  background: rgba(15, 12, 41, 0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 40px;
+  margin: 0 30px 40px 30px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.header-content {
+  position: relative;
+  z-index: 2;
+}
+
+.page-title {
+  font-size: 36px;
+  font-weight: 800;
+  margin-bottom: 15px;
+  background: linear-gradient(90deg, #ffffff, #a29bfe);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.page-subtitle {
+  font-size: 18px;
+  color: #d0ceff;
+  margin-bottom: 25px;
+  line-height: 1.6;
+  max-width: 600px;
+}
+
+.posts-count {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 24px;
+  background: rgba(108, 92, 231, 0.2);
+  border: 1px solid rgba(108, 92, 231, 0.3);
+  border-radius: 25px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.posts-count i {
+  color: #6c5ce7;
+  font-size: 20px;
+}
+
+/* Decoration */
+.header-decoration {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.decoration-dot {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ff6b6b;
+  opacity: 0.5;
+}
+
+.dot-1 {
+  top: 20%;
+  left: 10%;
+  animation: floatDot 6s infinite ease-in-out;
+}
+
+.dot-2 {
+  bottom: 20%;
+  right: 10%;
+  background: #4ecdc4;
+  animation: floatDot 6s infinite ease-in-out reverse;
+}
+
+.decoration-line {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(108, 92, 231, 0.3),
+    transparent
+  );
+}
+
+@keyframes floatDot {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* Main Container */
+.posts-page-container {
+  display: grid;
+  grid-template-columns: 1fr 350px;
+  gap: 40px;
+  padding: 0 30px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.main-content {
+  grid-column: 1;
+}
+
+.sidebar-container {
+  grid-column: 2;
+}
+
+/* Loading State */
+.posts-loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  text-align: center;
+}
+
+.loading-spinner {
+  width: 60px;
+  height: 60px;
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  border-top: 4px solid #6c5ce7;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.posts-loading-container p {
+  color: #d0ceff;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .posts-page-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .sidebar-container {
+    grid-column: 1;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .posts-page-header {
+    margin: 0 20px 30px 20px;
+    padding: 30px;
+  }
+
+  .page-title {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .posts-page-wrapper {
+    padding: 20px 0 40px;
+    margin-top: 80px;
+  }
+
+  .posts-page-container {
+    padding: 0 20px;
+    gap: 25px;
+  }
+
+  .posts-page-header {
+    margin: 0 15px 25px 15px;
+    padding: 25px;
+  }
+
+  .page-title {
+    font-size: 28px;
+  }
+
+  .page-subtitle {
+    font-size: 16px;
+  }
+
+  .posts-count {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .posts-page-wrapper {
+    padding: 15px 0 30px;
+    margin-top: 60px;
+  }
+
+  .posts-page-container {
+    padding: 0 15px;
+    gap: 20px;
+  }
+
+  .posts-page-header {
+    margin: 0 10px 20px 10px;
+    padding: 20px;
+  }
+
+  .page-title {
+    font-size: 24px;
+  }
+
+  .page-subtitle {
+    font-size: 15px;
+  }
+
+  .posts-count {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .loading-spinner {
+    width: 50px;
+    height: 50px;
+  }
+
+  .posts-loading-container p {
+    font-size: 16px;
+  }
+}
