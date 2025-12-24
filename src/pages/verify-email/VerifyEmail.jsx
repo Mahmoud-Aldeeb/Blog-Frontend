@@ -22,7 +22,7 @@ const VerifyEmail = () => {
     } finally {
       setIsLoading(false);
     }
-  }, [userId, token]);
+  }, [userId, token, dispatch]);
 
   return (
     <div className="verify-email-wrapper">

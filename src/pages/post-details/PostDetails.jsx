@@ -2,7 +2,6 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import AddComment from "../../components/comments/AddComment";
 import CommentList from "../../components/comments/CommentList";
-import { posts } from "../../dummyData";
 import "./post-details.css";
 import UpdatePostModal from "./UpdatePostModal";
 import { toast } from "react-toastify";

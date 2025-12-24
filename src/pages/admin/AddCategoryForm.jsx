@@ -2,11 +2,10 @@ import { toast } from "react-toastify";
 import { useState } from "react";
 import { createCategory } from "../../redux/apiCalls/categoryApiCall";
 import "./AddCategoryForm.css";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const AddCategoryForm = ({ onCategoryAdded, onClose }) => {
   const dispatch = useDispatch();
-  const { categories } = useSelector((state) => state.category);
   const [title, setTitle] = useState("");
   // const [description, setDescription] = useState("");
   const [isLoading, setIsLoading] = useState(false);

@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { toast } from "react-toastify";
 import swal from "sweetalert";
 import AdminSidebar from "./AdminSidebar";
 import "./admin-table.css";
