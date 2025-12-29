@@ -3,7 +3,7 @@
   padding: 40px 20px;
   background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
   background-attachment: fixed;
-  margin-top: 80px;
+  margin-top: 70px;
 }
 
 .category-container {
@@ -98,6 +98,10 @@
 }
 
 @media (max-width: 480px) {
+  .category {
+    width: 100%;
+  }
+
   .category-title {
     font-size: 28px;
   }

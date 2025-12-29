@@ -225,6 +225,7 @@
   .posts-page-wrapper {
     padding: 15px 0 30px;
     margin-top: 60px;
+    width: fit-content;
   }
 
   .posts-page-container {

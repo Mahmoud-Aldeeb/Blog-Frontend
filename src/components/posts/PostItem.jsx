@@ -7,6 +7,7 @@ const PostItem = ({ post, username, userId }) => {
     ? `/profile/${userId}`
     : `/profile/${post?.user?._id}`;
   const { user } = useSelector((state) => state.auth);
+
   return (
     <div className="post-item">
       <div className="post-item-inner">
@@ -80,7 +81,8 @@ const PostItem = ({ post, username, userId }) => {
             </div>
             <div className="stat-item">
               <i className="bi bi-chat-left-fill"></i>
-              <span>{post?.comments?.length || 0}</span>
+              {/* <span>{comments?.length || 0}</span> */}
+              <span>{post?.commentCount || 0}</span>
             </div>
           </div>
 

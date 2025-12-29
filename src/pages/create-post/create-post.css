@@ -635,7 +635,7 @@
 
 @media (max-width: 480px) {
   .create-post-wrapper {
-    padding: 15px;
+    padding: 75px 15px 15px 15px;
   }
 
   .create-post-container {

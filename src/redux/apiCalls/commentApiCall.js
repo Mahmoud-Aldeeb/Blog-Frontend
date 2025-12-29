@@ -75,3 +75,24 @@ export function fetchAllComments() {
     }
   };
 }
+
+// toggle like post
+export function toggleLikeComment(commentId) {
+  return async (dispatch, getState) => {
+    try {
+      let { data } = await request.put(
+        `/api/comments/like/${commentId}`,
+        {},
+        {
+          headers: {
+            Authorization: "Bearer " + getState().auth.user.token,
+          },
+        }
+      );
+
+      dispatch(commentActions.setLike(data));
+    } catch (error) {
+      toast.error(error.response?.data?.message);
+    }
+  };
+}

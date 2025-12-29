@@ -4,11 +4,16 @@ import UpdateCommentModal from "./UpdateCommentModal";
 import swal from "sweetalert";
 import { formatDistanceToNow } from "date-fns";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteComment } from "../../redux/apiCalls/commentApiCall";
+import {
+  deleteComment,
+  toggleLikeComment,
+} from "../../redux/apiCalls/commentApiCall";
 
 const CommentList = ({ comments }) => {
   const dispatch = useDispatch();
+
   const { user } = useSelector((state) => state.auth);
+
   const [updateComment, setUpdateComment] = useState(false);
   const [commentForUpdate, setCommentForUpdate] = useState(null);
 
@@ -16,51 +21,6 @@ const CommentList = ({ comments }) => {
     setCommentForUpdate(comment);
     setUpdateComment(true);
   };
-
-  // const [likedComments, setLikedComments] = useState({});
-  // const [comments, setComments] = useState([
-  //   {
-  //     id: 1,
-  //     user: {
-  //       name: "Youssef Abbas",
-  //       avatar: "/images/user-avatar.png",
-  //       role: "Community Member",
-  //     },
-  //     content:
-  //       "This is an amazing post! I really enjoyed reading it and learned a lot about the topic. Looking forward to more content like this.",
-  //     time: "4 hours ago",
-  //     likes: 12,
-  //     isLiked: false,
-  //   },
-  //   {
-  //     id: 2,
-  //     user: {
-  //       name: "Sarah Johnson",
-  //       avatar: "/images/user-avatar-2.png",
-  //       role: "Verified Writer",
-  //     },
-  //     content:
-  //       "Great insights! The points about modern web development are spot on. I particularly liked the section about performance optimization.",
-  //     time: "1 day ago",
-  //     likes: 8,
-  //     isLiked: true,
-  //   },
-  //   {
-  //     id: 3,
-  //     user: {
-  //       name: "Michael Chen",
-  //       avatar: "/images/user-avatar-3.png",
-  //       role: "Software Engineer",
-  //     },
-  //     content:
-  //       "Could you elaborate more on the implementation details? I'd love to see some code examples for better understanding.",
-  //     time: "2 days ago",
-  //     likes: 5,
-  //     isLiked: false,
-  //   },
-  // ]);
-
-  // Delete Comment Handler
 
   const deleteCommentHandler = (commentId) => {
     swal({
@@ -115,7 +75,8 @@ const CommentList = ({ comments }) => {
                 <div className="comment-user-info">
                   <div className="user-avatar">
                     <img
-                      src={user?.profilePhoto?.url}
+                      // src={user?.profilePhoto?.url}
+                      src={comment?.profilePhoto}
                       alt={comment?.username}
                     />
                     <div className="user-status"></div>
@@ -136,24 +97,31 @@ const CommentList = ({ comments }) => {
 
                 <div className="comment-actions">
                   <button
-                    className={`like-btn ${comment.isLiked ? "liked" : ""}`}
-                    // onClick={() => handleLikeComment(comment.id)}
+                    // className={`like-btn ${
+                    //   comment.likes.length === 0 ? "liked" : ""
+                    // }`}
+                    className={`like-btn ${
+                      comment?.likes.includes(user?._id) ? "liked" : ""
+                    }`}
+                    onClick={() => dispatch(toggleLikeComment(comment?._id))}
                   >
                     <i
                       className={`bi ${
-                        comment.isLiked ? "bi-heart-fill" : "bi-heart"
+                        comment?.likes.includes(user?._id)
+                          ? "bi-heart-fill"
+                          : "bi-heart"
                       }`}
                     ></i>
-                    <span>{comment.likes}</span>
+                    <span>{comment?.likes.length} Likes</span>
                   </button>
 
-                  <button
+                  {/* <button
                     className="reply-btn"
                     // onClick={() => handleReplyComment(comment.id)}
                   >
                     <i className="bi bi-reply-fill"></i>
                     Reply
-                  </button>
+                  </button> */}
                 </div>
               </div>
 
@@ -181,26 +149,6 @@ const CommentList = ({ comments }) => {
                   </div>
                 </div>
               )}
-
-              {/* Nested Comments (Example) */}
-              {/* {comment?._id === 1 && (
-                <div className="nested-comments">
-                  <div className="nested-comment">
-                    <div className="nested-user-avatar">
-                      <img src="/images/user-avatar-4.png" alt="Admin" />
-                    </div>
-                    <div className="nested-comment-content">
-                      <div className="nested-comment-header">
-                        <span className="nested-user-name">Admin</span>
-                        <span className="nested-comment-time">2 hours ago</span>
-                      </div>
-                      <p>
-                        Thanks for your feedback! Glad you enjoyed the post.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              )} */}
             </div>
           ))
         )}

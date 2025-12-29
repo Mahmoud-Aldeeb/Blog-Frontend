@@ -116,6 +116,18 @@ export function getUsersCount() {
     }
   };
 }
+// Get Users Count (for all)
+export function getUsersCountAll() {
+  return async (dispatch, getState) => {
+    try {
+      const { data } = await request.get(`/api/users/countAll`);
+
+      dispatch(profileActions.setUserCountAll(data));
+    } catch (error) {
+      toast.error(error.response?.data?.message);
+    }
+  };
+}
 
 // Get All Users Profile (for admin dashboard)
 export function getAllUsersProfile() {

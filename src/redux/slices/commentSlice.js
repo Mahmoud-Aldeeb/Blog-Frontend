@@ -4,16 +4,20 @@ const commentSlice = createSlice({
   name: "comment",
   initialState: {
     comments: [],
+    commentLikes: null,
   },
   reducers: {
     setComments(state, action) {
       state.comments = action.payload;
     },
-    // addComment(state, action) {
-    //   state.comments.push(action.payload);
-    // },
     deleteComment(state, action) {
       state.comments = state.comments.filter((c) => c._id !== action.payload);
+    },
+    setLike(state, action) {
+      if (!state.commentLikes) {
+        state.commentLikes = {};
+      }
+      state.commentLikes.likes = action.payload.likes;
     },
   },
 });

@@ -383,6 +383,12 @@
 }
 
 @media (max-width: 480px) {
+  .post-item {
+    width: 85%;
+    margin-bottom: 30px;
+    position: relative;
+    left: 28px;
+  }
   .post-item-image-container {
     height: 180px;
   }

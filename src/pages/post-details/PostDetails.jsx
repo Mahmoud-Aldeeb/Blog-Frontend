@@ -138,7 +138,10 @@ const PostDetails = () => {
 
             <div className="author-section">
               <div className="author-avatar">
-                <img src={user?.profilePhoto?.url} alt={post?.user.username} />
+                <img
+                  src={post?.user?.profilePhoto?.url}
+                  alt={post?.user.username}
+                />
               </div>
               <div className="author-info">
                 <Link

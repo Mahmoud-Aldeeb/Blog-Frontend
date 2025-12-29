@@ -13,7 +13,6 @@ const PostList = ({ posts }) => {
       </div>
     );
   }
-  console.log("PostList posts:", posts);
 
   return (
     <div className="post-list-container">

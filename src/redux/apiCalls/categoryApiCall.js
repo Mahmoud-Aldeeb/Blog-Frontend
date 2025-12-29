@@ -15,6 +15,18 @@ export function fetchCategory() {
   };
 }
 
+export function getCategoriesCount() {
+  return async (dispatch, getState) => {
+    try {
+      const { data } = await request.get(`/api/categories/count`);
+
+      dispatch(categoryActions.setCategoriesCount(data));
+    } catch (error) {
+      toast.error(error.response?.data?.message);
+    }
+  };
+}
+
 // Create Category
 export function createCategory(newCategory) {
   return async (dispatch, getState) => {

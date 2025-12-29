@@ -1,18 +1,18 @@
 // import axios from "axios";
 
 // const request = axios.create({
-//   baseURL: "http://localhost:8000",
+//   baseURL: "http://localhost:5000",
 // });
 
 // export default request;
 
-import axios from "axios";
-
 // In development we fall back to the local backend.
 // In production (Vercel) you should set REACT_APP_API_URL in the project Environment Variables.
+
+import axios from "axios";
 const API_URL =
   process.env.REACT_APP_API_URL ||
-  (process.env.NODE_ENV === "development" ? "http://localhost:8000" : "");
+  (process.env.NODE_ENV === "development" ? "http://localhost:5000" : "");
 
 if (!API_URL && process.env.NODE_ENV !== "development") {
   // eslint-disable-next-line no-console
