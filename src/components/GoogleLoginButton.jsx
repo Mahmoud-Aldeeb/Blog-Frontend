@@ -6,7 +6,6 @@ import {
   initializeGoogleSignIn,
   renderGoogleButton,
 } from "../config/googleConfig";
-import "./GoogleLoginButton.css";
 
 const GoogleLoginButton = ({ mode = "login", onSuccess, onError }) => {
   const dispatch = useDispatch();
