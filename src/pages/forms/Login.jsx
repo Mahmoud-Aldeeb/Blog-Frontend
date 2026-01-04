@@ -1,17 +1,33 @@
 import "./form.css";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../../redux/apiCalls/authApiCall";
+import { loadGoogleSDK } from "../../config/googleConfig";
+import GoogleLoginButton from "../../components/GoogleLoginButton";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [isGoogleSDKLoaded, setIsGoogleSDKLoaded] = useState(false);
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    const initGoogle = async () => {
+      try {
+        await loadGoogleSDK();
+        setIsGoogleSDKLoaded(true);
+      } catch (error) {
+        console.error("Error loading Google SDK:", error);
+      }
+    };
+
+    initGoogle();
+  }, []);
 
   // From Submit Handler
   const formSubmitHandler = (e) => {
@@ -20,6 +36,14 @@ const Login = () => {
     if (password.trim() === "") return toast.error("Password is required");
 
     dispatch(loginUser({ email, password }));
+  };
+
+  const handleGoogleSuccess = (userData) => {
+    console.log("Google login successful:", userData);
+    // يمكنك إضافة أي منطق إضافي هنا
+  };
+  const handleGoogleError = (error) => {
+    toast.error(error);
   };
 
   return (
@@ -105,20 +129,21 @@ const Login = () => {
           <button type="submit" className="form-btn">
             <i className="fas fa-sign-in-alt"></i> Sign In
           </button>
-
-          {/* <div className="form-divider">
-            <span>Or continue with</span>
-          </div> */}
-
-          {/* <div className="social-login">
-            <button type="button" className="social-btn google">
-              <i className="fab fa-google"></i> Google
-            </button>
-            <button type="button" className="social-btn github">
-              <i className="fab fa-github"></i> GitHub
-            </button>
-          </div> */}
         </form>
+        <div className="social-login ">
+          {isGoogleSDKLoaded ? (
+            <GoogleLoginButton
+              mode="login"
+              onSuccess={handleGoogleSuccess}
+              onError={handleGoogleError}
+            />
+          ) : (
+            <div className="google-loading-placeholder">
+              <i className="fas fa-spinner fa-spin"></i>
+              Loading Google authentication...
+            </div>
+          )}
+        </div>
 
         <div className="form-footer">
           Don't have an account? <Link to="/register">Create Account</Link>

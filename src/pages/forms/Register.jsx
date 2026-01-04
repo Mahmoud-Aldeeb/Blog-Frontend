@@ -1,10 +1,12 @@
 import "./form.css";
 import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { registerUser } from "../../redux/apiCalls/authApiCall";
 import swal from "sweetalert";
+import { loadGoogleSDK } from "../../config/googleConfig";
+import GoogleLoginButton from "../../components/GoogleLoginButton";
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -15,7 +17,21 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [termsAccepted, setTermsAccepted] = useState(false);
+  const [isGoogleSDKLoaded, setIsGoogleSDKLoaded] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const initGoogle = async () => {
+      try {
+        await loadGoogleSDK();
+        setIsGoogleSDKLoaded(true);
+      } catch (error) {
+        console.error("Error loading Google SDK:", error);
+      }
+    };
+
+    initGoogle();
+  }, []);
 
   // From Submit Handler
   const formSubmitHandler = (e) => {
@@ -38,6 +54,18 @@ const Register = () => {
         }
       });
     }
+  };
+
+  const handleGoogleSuccess = (userData) => {
+    console.log("Google registration successful:", userData);
+    // توجيه المستخدم مباشرة للداشبورد
+    setTimeout(() => {
+      window.location.href = "/";
+    }, 1000);
+  };
+
+  const handleGoogleError = (error) => {
+    toast.error(error);
   };
 
   return (
@@ -170,9 +198,9 @@ const Register = () => {
             <i className="fas fa-user-plus"></i> Create Account
           </button>
 
-          {/* <div className="form-divider">
+          <div className="form-divider">
             <span>Or sign up with</span>
-          </div> */}
+          </div>
 
           {/* <div className="social-login">
             <button type="button" className="social-btn google">
@@ -183,6 +211,20 @@ const Register = () => {
             </button>
           </div> */}
         </form>
+        <div className="social-login">
+          {isGoogleSDKLoaded ? (
+            <GoogleLoginButton
+              mode="signup"
+              onSuccess={handleGoogleSuccess}
+              onError={handleGoogleError}
+            />
+          ) : (
+            <div className="google-loading-placeholder">
+              <i className="fas fa-spinner fa-spin"></i>
+              Loading Google authentication...
+            </div>
+          )}
+        </div>
 
         <div className="form-footer">
           Already have an account? <Link to="/login">Sign In</Link>

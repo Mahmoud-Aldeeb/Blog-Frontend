@@ -47,3 +47,40 @@ export function verifyEmail(userId, token) {
     }
   };
 }
+
+export function googleLogin(googleToken) {
+  return async (dispatch) => {
+    try {
+      console.log("🔵 Sending Google token to backend...");
+
+      const { data } = await request.post("/api/auth/google", { googleToken });
+
+      console.log("✅ Google login response:", data);
+
+      // حفظ بيانات المستخدم
+      dispatch(authActions.login(data));
+      localStorage.setItem("userInfo", JSON.stringify(data));
+
+      // إعادة توجيه بعد نجاح الدخول
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 1000);
+
+      toast.success(data.message || "تم تسجيل الدخول بنجاح!");
+
+      return { success: true, data };
+    } catch (error) {
+      console.error("❌ Google login error:", {
+        message: error.response?.data?.message,
+        status: error.response?.status,
+        data: error.response?.data,
+      });
+
+      const errorMessage =
+        error.response?.data?.message || "Google login failed";
+      toast.error(errorMessage);
+
+      return { success: false, error: errorMessage };
+    }
+  };
+}

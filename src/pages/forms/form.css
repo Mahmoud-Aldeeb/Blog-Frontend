@@ -487,3 +487,256 @@
     font-size: 20px;
   }
 }
+
+/* =============== */
+
+/* Add to form.css */
+
+/* Google Loading Placeholder */
+.google-loading-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  color: #b8b5ff;
+  font-size: 14px;
+}
+
+.google-loading-placeholder i {
+  color: #6c5ce7;
+}
+
+/* Social Login Container Update */
+.social-login {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+/* One Tap Dialog Styling */
+#credential_picker_container {
+  position: fixed !important;
+  top: 20px !important;
+  right: 20px !important;
+  z-index: 9999 !important;
+}
+
+/* Add to existing form.css */
+
+/* Google Button in Social Login Section */
+.social-login {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+/* Divider before Google button */
+.form-divider {
+  display: flex;
+  align-items: center;
+  margin: 25px 0;
+  color: #b8b5ff;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.form-divider::before,
+.form-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.form-divider span {
+  padding: 0 15px;
+  font-weight: 600;
+  background: rgba(15, 12, 41, 0.8);
+}
+
+/* Loading placeholder */
+.google-loading-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  color: #b8b5ff;
+  font-size: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.google-loading-placeholder i {
+  color: #6c5ce7;
+  animation: spin 1s linear infinite;
+}
+
+/* One Tap Dialog Styling */
+#credential_picker_container {
+  position: fixed !important;
+  top: 20px !important;
+  right: 20px !important;
+  z-index: 9999 !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  .social-login {
+    gap: 12px;
+  }
+
+  .google-auth-container {
+    margin: 20px 0;
+  }
+
+  .form-divider {
+    margin: 20px 0;
+    font-size: 13px;
+  }
+
+  .form-divider span {
+    padding: 0 12px;
+  }
+}
+
+/* Container for Google button */
+.google-auth-container {
+  width: 100%;
+  margin: 0;
+}
+/* Google button styling to match form design */
+.google-signin-btn {
+  width: 100%;
+  height: 56px;
+  border-radius: 15px;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.google-signin-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  border-color: rgba(108, 92, 231, 0.5);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.google-signin-btn:active {
+  transform: translateY(0);
+}
+.google-btn-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  gap: 12px;
+  padding: 0 20px;
+}
+.google-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+.google-btn-text {
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+.google-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 12px;
+  color: #6c5ce7;
+  font-weight: 500;
+  font-size: 16px;
+  width: 100%;
+}
+.google-loading i {
+  font-size: 18px;
+  animation: spin 1s linear infinite;
+}
+.google-error-message {
+  margin-top: 10px;
+  padding: 10px 15px;
+  background: rgba(255, 107, 107, 0.1);
+  border: 1px solid rgba(255, 107, 107, 0.3);
+  border-radius: 10px;
+  color: #ff6b6b;
+  font-size: 13px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.google-error-message i {
+  font-size: 14px;
+}
+
+/* Fix for Google's own button styling */
+.g_id_signin {
+  width: 100% !important;
+  border-radius: 15px !important;
+  overflow: hidden !important;
+}
+
+/* Make sure Google button fills the container */
+#credential_picker_container iframe {
+  border-radius: 15px !important;
+}
+
+/* Hide Google's default styling and use ours */
+iframe[src*="accounts.google.com"] {
+  border-radius: 15px !important;
+}
+
+/* Responsive fixes */
+@media (max-width: 576px) {
+  .google-signin-btn {
+    height: 52px;
+  }
+
+  .google-btn-text {
+    font-size: 15px;
+  }
+
+  .google-btn-content {
+    padding: 0 15px;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 380px) {
+  .google-signin-btn {
+    height: 48px;
+  }
+
+  .google-btn-text {
+    font-size: 14px;
+  }
+
+  .google-icon {
+    width: 20px;
+    height: 20px;
+  }
+}
