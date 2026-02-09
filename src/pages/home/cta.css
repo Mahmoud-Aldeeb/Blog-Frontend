@@ -1,0 +1,166 @@
+/* CTA Section */
+.cta-section {
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-content {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0.02)
+  );
+  backdrop-filter: blur(10px);
+  border-radius: 30px;
+  padding: 60px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  z-index: 2;
+}
+
+.cta-text {
+  margin-bottom: 40px;
+}
+
+.cta-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+  background: linear-gradient(90deg, white, #a29bfe);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.cta-description {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 35px;
+  border-radius: 50px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 1.1rem;
+}
+
+.cta-decoration {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.cta-orbits {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.orbit {
+  position: absolute;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  will-change: transform;
+}
+
+.orbit-1 {
+  width: 200px;
+  height: 200px;
+  top: 10%;
+  left: 10%;
+  animation: orbitRotate 20s infinite linear;
+}
+
+.orbit-2 {
+  width: 150px;
+  height: 150px;
+  bottom: 20%;
+  right: 15%;
+  animation: orbitRotate 15s infinite linear reverse;
+}
+
+.orbit-3 {
+  width: 100px;
+  height: 100px;
+  top: 60%;
+  left: 20%;
+  animation: orbitRotate 10s infinite linear;
+}
+
+.orbit-dot {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.dot-1 {
+  background: #ff6b6b;
+}
+
+.dot-2 {
+  background: #4ecdc4;
+}
+
+.dot-3 {
+  background: #6c5ce7;
+}
+
+@keyframes orbitRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive Media Queries */
+@media (max-width: 768px) {
+  .cta-content {
+    padding: 40px 20px;
+  }
+
+  .cta-title {
+    font-size: 2rem;
+  }
+
+  .cta-btn {
+    padding: 16px 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cta-buttons {
+    flex-direction: column;
+  }
+
+  .cta-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

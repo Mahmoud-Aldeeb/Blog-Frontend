@@ -17,7 +17,7 @@ const API_URL =
 if (!API_URL && process.env.NODE_ENV !== "development") {
   // eslint-disable-next-line no-console
   console.warn(
-    "REACT_APP_API_URL is not set. API requests will be sent to the same origin."
+    "REACT_APP_API_URL is not set. API requests will be sent to the same origin.",
   );
 }
 

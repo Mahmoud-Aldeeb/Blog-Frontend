@@ -49,7 +49,6 @@ html::-webkit-scrollbar-thumb {
   border-radius: 15px;
 }
 
-/* في ملف App.css أو global.css */
 .main-app-wrapper {
   min-height: 100vh;
   display: flex;
@@ -58,10 +57,9 @@ html::-webkit-scrollbar-thumb {
 
 .main-content {
   /* flex: 1; */
-  padding-top: 90px; /* مساحة للهيدر الثابت */
+  padding-top: 90px;
 }
 
-/* تأكد أن الصفحات تأخذ المساحة الكاملة */
 .page-wrapper {
   min-height: calc(100vh - 80px);
   width: 100%;
