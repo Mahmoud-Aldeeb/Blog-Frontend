@@ -5,7 +5,7 @@ import "./buttons.css";
 
 const Cta = () => {
   return (
-    <section className="cta-section" role="region" aria-label="Call to action">
+    <section className="cta-section" aria-label="Call to action">
       <div className="container">
         <div className="cta-content">
           <div className="cta-text">

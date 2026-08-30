@@ -57,11 +57,7 @@ const Stats = () => {
   }, [dispatch]);
 
   return (
-    <section
-      className="stats-section"
-      role="region"
-      aria-label="Community statistics"
-    >
+    <section className="stats-section" aria-label="Community statistics">
       <div className="container">
         <div className="section-header">
           <h2 className="section-title">
