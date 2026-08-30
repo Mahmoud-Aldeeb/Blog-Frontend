@@ -1,35 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import "./hero.css";
-import "./buttons.css";
 
 const Hero = () => {
-  const [particles, setParticles] = useState([]);
-
-  useEffect(() => {
-    const generatedParticles = Array.from({ length: 15 }, (_, i) => ({
-      id: i,
-      left: Math.random() * 100,
-      top: Math.random() * 100,
-      delay: i * 0.2,
-    }));
-    setParticles(generatedParticles);
-  }, []);
-
   return (
-    <section className="home-hero" role="banner" aria-label="Main hero section">
+    <section className="home-hero">
       <div className="hero-overlay">
         <div className="hero-particles">
-          {particles.map((particle) => (
+          {[...Array(15)].map((_, i) => (
             <div
-              key={`particle-${particle.id}`}
+              key={i}
               className="hero-particle"
               style={{
-                animationDelay: `${particle.delay}s`,
-                left: `${particle.left}%`,
-                top: `${particle.top}%`,
+                animationDelay: `${i * 0.2}s`,
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
               }}
-              aria-hidden="true"
             ></div>
           ))}
         </div>
@@ -37,22 +23,17 @@ const Hero = () => {
 
       <div className="hero-content">
         <div className="hero-text-container">
-          <div className="hero-badge" role="status" aria-label="Welcome badge">
+          <div className="hero-badge">
             <span>🎉 Welcome to our community!</span>
           </div>
 
           <h1 className="hero-title">
-            <span className="sr-only">Share Your Stories With The World</span>
-            <span className="hero-title-line" aria-hidden="true">
-              Share Your
-            </span>
-            <span className="hero-title-line highlight" aria-hidden="true">
+            <span className="hero-title-line">Share Your</span>
+            <span className="hero-title-line highlight">
               <span className="highlight-text">Stories</span>
               <span className="highlight-glow"></span>
             </span>
-            <span className="hero-title-line" aria-hidden="true">
-              With The World
-            </span>
+            <span className="hero-title-line">With The World</span>
           </h1>
 
           <p className="hero-description">
@@ -61,11 +42,7 @@ const Hero = () => {
           </p>
 
           <div className="hero-buttons">
-            <Link
-              to="/posts/create-post"
-              className="btn btn-primary hero-btn create-btn"
-              aria-label="Start writing a new post"
-            >
+            <Link to="/posts/create-post" className="hero-btn create-btn">
               <span className="btn-icon">
                 <i className="bi bi-pencil-fill"></i>
               </span>
@@ -73,11 +50,7 @@ const Hero = () => {
               <span className="btn-glow"></span>
             </Link>
 
-            <Link
-              to="/posts"
-              className="btn btn-secondary hero-btn explore-btn"
-              aria-label="Explore existing posts"
-            >
+            <Link to="/posts" className="hero-btn explore-btn">
               <span className="btn-icon">
                 <i className="bi bi-compass-fill"></i>
               </span>
@@ -87,33 +60,51 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className="hero-visual" aria-hidden="true">
-          <div className="floating-elements">
-            <div className="floating-element element-1">
-              <i
-                className="bi bi-chat-square-quote-fill"
-                aria-hidden="true"
-              ></i>
+        <div className="hero-visual">
+          {/* Rotating orbit rings */}
+          <div className="orbit-container">
+            <div className="orbit-ring orbit-ring-outer"></div>
+            <div className="orbit-ring orbit-ring-mid"></div>
+            <div className="orbit-ring orbit-ring-inner"></div>
+
+            {/* Central icon */}
+            <div className="orbit-center">
+              <i className="bi bi-pencil-fill"></i>
             </div>
-            <div className="floating-element element-2">
-              <i className="bi bi-journal-bookmark-fill" aria-hidden="true"></i>
+
+            {/* Orbit icons placed at fixed positions */}
+            <div className="orbit-icon orbit-icon-top">
+              <div className="orbit-icon-circle gradient-pink">
+                <i className="bi bi-chat-square-quote-fill"></i>
+              </div>
+              <span className="orbit-icon-label">Stories</span>
             </div>
-            <div className="floating-element element-3">
-              <i className="bi bi-lightning-fill" aria-hidden="true"></i>
+
+            <div className="orbit-icon orbit-icon-right">
+              <div className="orbit-icon-circle gradient-teal">
+                <i className="bi bi-journal-bookmark-fill"></i>
+              </div>
+              <span className="orbit-icon-label">Articles</span>
             </div>
-            <div className="floating-element element-4">
-              <i className="bi bi-heart-fill" aria-hidden="true"></i>
+
+            <div className="orbit-icon orbit-icon-bottom">
+              <div className="orbit-icon-circle gradient-purple">
+                <i className="bi bi-lightning-fill"></i>
+              </div>
+              <span className="orbit-icon-label">Ideas</span>
             </div>
-          </div>
-          <div className="hero-illustration">
-            <div className="illustration-circle circle-1"></div>
-            <div className="illustration-circle circle-2"></div>
-            <div className="illustration-circle circle-3"></div>
+
+            <div className="orbit-icon orbit-icon-left">
+              <div className="orbit-icon-circle gradient-green">
+                <i className="bi bi-heart-fill"></i>
+              </div>
+              <span className="orbit-icon-label">Community</span>
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="hero-wave" aria-hidden="true">
+      <div className="hero-wave">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
           <path
             fill="currentColor"

@@ -804,11 +804,11 @@
     display: block;
   }
 
+  /* إزالة position absolute - بنخليها تبقى جزء من الـ flex layout الطبيعي */
   .header-right {
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
+    position: static;
+    transform: none;
+    flex-shrink: 0;
   }
 
   .logo-text {
@@ -816,12 +816,12 @@
   }
 
   .auth-buttons {
-    gap: 10px;
+    gap: 8px;
   }
 
   .login-btn,
   .register-btn {
-    padding: 8px 15px;
+    padding: 8px 14px;
     font-size: 14px;
   }
 
@@ -830,6 +830,15 @@
     height: 40px;
     font-size: 20px;
   }
+
+  /* نخفي اسم المستخدم على الموبايل */
+  .username-container {
+    display: none;
+  }
+
+  .user-info-wrapper {
+    padding: 6px 10px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -837,20 +846,20 @@
     width: 280px;
   }
 
-  .header-right {
-    right: 15px;
+  .auth-buttons {
+    gap: 6px;
   }
 
   .login-btn,
   .register-btn {
-    padding: 8px 12px;
+    padding: 7px 10px;
     font-size: 13px;
   }
 }
 
 @media (max-width: 480px) {
   .header {
-    padding: 0 15px;
+    padding: 0 12px;
     height: 70px;
   }
 
@@ -867,24 +876,32 @@
     left: 0;
   }
 
-  .header-right {
-    right: 10px;
+  /* على الموبايل الصغير: نخفي النص ونسيب الأيقونة بس */
+  .btn-text {
+    display: none;
   }
 
   .login-btn,
   .register-btn {
-    padding: 6px 10px;
-    font-size: 12px;
+    padding: 8px 10px;
+    border-radius: 50%;
+    aspect-ratio: 1;
+    justify-content: center;
   }
 
   .login-btn .btn-icon,
   .register-btn .btn-icon {
-    font-size: 14px;
+    font-size: 18px;
+    margin: 0;
   }
 
   .user-avatar {
-    width: 35px;
-    height: 35px;
+    width: 36px;
+    height: 36px;
     font-size: 18px;
+  }
+
+  .auth-buttons {
+    gap: 6px;
   }
 }
